@@ -1,12 +1,14 @@
 package main
 
 import (
-	"fmt"
-	task1 "job/task-1"
+	task2 "job/task-2"
 )
 
 func main() {
-	fmt.Println(task1.TwoSum([]int{2, 7, 11, 15}, 17))
-
-	fmt.Println(task1.PlusOne([]int{9, 9, 7, 9}))
+	tasks := []*task2.Task{
+		task2.NewTask("Task 1"),
+		task2.NewTask("Task 2"),
+		task2.NewTask("Task 3"),
+	}
+	task2.ExecuteTask(tasks)
 }
