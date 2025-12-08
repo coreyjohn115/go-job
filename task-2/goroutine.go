@@ -72,3 +72,12 @@ func ExecuteTask(t []*Task) {
 	}
 	wg.Wait()
 }
+
+func RunGoroutine() {
+	tasks := []*Task{
+		NewTask("Task 1"),
+		NewTask("Task 2"),
+		NewTask("Task 3"),
+	}
+	ExecuteTask(tasks)
+}

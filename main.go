@@ -1,14 +1,7 @@
 package main
 
-import (
-	task2 "job/task-2"
-)
+import task3 "job/task-3"
 
 func main() {
-	tasks := []*task2.Task{
-		task2.NewTask("Task 1"),
-		task2.NewTask("Task 2"),
-		task2.NewTask("Task 3"),
-	}
-	task2.ExecuteTask(tasks)
+	task3.RunGorm()
 }
