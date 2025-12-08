@@ -1,0 +1,170 @@
+[
+  {
+    "test_name": "用户登录 - 正常情况",
+    "method": "POST",
+    "url": "/auth/login",
+    "payload": {
+      "email": "test@example.com",
+      "password": "123456"
+    },
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaXNzIjoianNzIiwic3ViIjoidXNlci10b2tlbiIsImV4cCI6MTc2NTI3MTkyMiwibmJmIjoxNzY1MTg1NTIyLCJpYXQiOjE3NjUxODU1MjJ9.SCSRvwRLO0Q38Ofyo5tJR4OWqjR1o5eJ6cJTMsfe0DU",
+      "user": {
+        "ID": 1,
+        "CreatedAt": "2025-12-08T17:15:20.79+08:00",
+        "UpdatedAt": "2025-12-08T17:15:20.79+08:00",
+        "DeletedAt": null,
+        "Username": "testuser",
+        "Password": "$2a$10$ixm5eTFZkKbMnuRsXZ2osO3sKvGX5Ftkrm3hzeorPNJx3p1uHbCSW",
+        "Email": "test@example.com"
+      }
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "获取用户信息 - 正常情况",
+    "method": "GET",
+    "url": "/api/profile",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "email": "test@example.com",
+      "user_id": 1,
+      "username": "testuser"
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "创建文章 - 正常情况",
+    "method": "POST",
+    "url": "/api/create_post",
+    "payload": {
+      "title": "测试文章标题",
+      "content": "这是一篇测试文章的内容"
+    },
+    "expected_status": 201,
+    "actual_status": 201,
+    "response": {
+      "ID": 1,
+      "CreatedAt": "2025-12-08T17:18:42.828+08:00",
+      "UpdatedAt": "2025-12-08T17:18:42.828+08:00",
+      "DeletedAt": null,
+      "Title": "测试文章标题",
+      "Content": "这是一篇测试文章的内容",
+      "UserID": 0
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "获取文章列表 - 正常情况",
+    "method": "GET",
+    "url": "/api/get_post",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "message": "Post details",
+      "post": [
+        {
+          "ID": 1,
+          "CreatedAt": "2025-12-08T17:18:42.828+08:00",
+          "UpdatedAt": "2025-12-08T17:18:42.828+08:00",
+          "DeletedAt": null,
+          "Title": "测试文章标题",
+          "Content": "这是一篇测试文章的内容",
+          "UserID": 0
+        }
+      ]
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "获取特定文章 - 正常情况",
+    "method": "GET",
+    "url": "/api/get_post?id=1",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "message": "Post details",
+      "post": [
+        {
+          "ID": 1,
+          "CreatedAt": "2025-12-08T17:18:42.828+08:00",
+          "UpdatedAt": "2025-12-08T17:18:42.828+08:00",
+          "DeletedAt": null,
+          "Title": "测试文章标题",
+          "Content": "这是一篇测试文章的内容",
+          "UserID": 0
+        }
+      ]
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "创建评论 - 正常情况",
+    "method": "POST",
+    "url": "/api/create_comment",
+    "payload": {
+      "content": "这是一条测试评论",
+      "post_id": 1
+    },
+    "expected_status": 201,
+    "actual_status": 201,
+    "response": {
+      "code": 0,
+      "message": "Comment created"
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "获取评论 - 正常情况",
+    "method": "GET",
+    "url": "/api/get_comment?id=1",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "code": 0,
+      "data": [],
+      "message": "Comment details"
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "公开测试接口 - 无Token",
+    "method": "GET",
+    "url": "/public/test",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "message": "Public test"
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  },
+  {
+    "test_name": "公开测试接口 - 有Token",
+    "method": "GET",
+    "url": "/public/test",
+    "payload": null,
+    "expected_status": 200,
+    "actual_status": 200,
+    "response": {
+      "message": "Public test"
+    },
+    "success": true,
+    "timestamp": "2025-12-08 17:18:42"
+  }
+]
